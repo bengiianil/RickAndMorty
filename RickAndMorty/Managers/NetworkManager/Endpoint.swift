@@ -11,7 +11,7 @@ protocol Endpoint {
     var baseURL: String { get }
     var path: String { get }
     var httpMethod: HTTPMethod { get }
-    var headers: [String: String] { get }
+    var headers: [String: String]? { get }
     var queryParameters: [String: String]? { get }
 }
 

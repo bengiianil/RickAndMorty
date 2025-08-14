@@ -1,0 +1,31 @@
+//
+//  RickAndMortyApp.swift
+//  RickAndMorty
+//
+//  Created by Bengi Anıl on 14.08.2025.
+//
+
+import Foundation
+
+enum CharacterList: Endpoint {    
+    
+    case getCharacters(page: Int)
+    
+    var path: String {
+        switch self {
+        case .getCharacters(let page):
+            "/api/character"
+        }
+    }
+    
+    var queryParameters: [String : String]? {
+        switch self {
+        case .getCharacters(let page):
+            ["page" : "\(page)"]
+        }
+    }
+    
+    var httpMethod: HTTPMethod {
+        .get
+    }
+}
