@@ -195,6 +195,10 @@
 			);
 			mainGroup = B9E5EE822E4E7AD70010FAE7;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				B998B14B2E4E802200BF8CAF /* XCRemoteSwiftPackageReference "Shimmer-SwiftUI-Modifier" */,
+				B998B14C2E4E802C00BF8CAF /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = B9E5EE8C2E4E7AD70010FAE7 /* Products */;
 			projectDirPath = "";
@@ -578,6 +582,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B998B14B2E4E802200BF8CAF /* XCRemoteSwiftPackageReference "Shimmer-SwiftUI-Modifier" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/0xYanis/Shimmer-SwiftUI-Modifier.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		B998B14C2E4E802C00BF8CAF /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.5.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
 	};
 	rootObject = B9E5EE832E4E7AD70010FAE7 /* Project object */;
 }
