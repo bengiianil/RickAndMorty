@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		B998B14F2E4E808C00BF8CAF /* ShimmerEffect in Frameworks */ = {isa = PBXBuildFile; productRef = B998B14E2E4E808C00BF8CAF /* ShimmerEffect */; };
+		B998B1512E4E808F00BF8CAF /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = B998B1502E4E808F00BF8CAF /* Kingfisher */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		B9E5EE992E4E7AD90010FAE7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -52,6 +57,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B998B1512E4E808F00BF8CAF /* Kingfisher in Frameworks */,
+				B998B14F2E4E808C00BF8CAF /* ShimmerEffect in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,12 +79,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B998B14D2E4E808C00BF8CAF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B9E5EE822E4E7AD70010FAE7 = {
 			isa = PBXGroup;
 			children = (
 				B9E5EE8D2E4E7AD70010FAE7 /* RickAndMorty */,
 				B9E5EE9B2E4E7AD90010FAE7 /* RickAndMortyTests */,
 				B9E5EEA52E4E7AD90010FAE7 /* RickAndMortyUITests */,
+				B998B14D2E4E808C00BF8CAF /* Frameworks */,
 				B9E5EE8C2E4E7AD70010FAE7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -112,6 +127,8 @@
 			);
 			name = RickAndMorty;
 			packageProductDependencies = (
+				B998B14E2E4E808C00BF8CAF /* ShimmerEffect */,
+				B998B1502E4E808F00BF8CAF /* Kingfisher */,
 			);
 			productName = RickAndMorty;
 			productReference = B9E5EE8B2E4E7AD70010FAE7 /* RickAndMorty.app */;
@@ -601,6 +618,19 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B998B14E2E4E808C00BF8CAF /* ShimmerEffect */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B998B14B2E4E802200BF8CAF /* XCRemoteSwiftPackageReference "Shimmer-SwiftUI-Modifier" */;
+			productName = ShimmerEffect;
+		};
+		B998B1502E4E808F00BF8CAF /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B998B14C2E4E802C00BF8CAF /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B9E5EE832E4E7AD70010FAE7 /* Project object */;
 }
