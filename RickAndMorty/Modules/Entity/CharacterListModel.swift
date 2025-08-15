@@ -13,7 +13,7 @@ struct CharacterListModel: Codable {
     let results: [CharacterDetailModel]
 }
 
-// MARK: - Info
+// MARK: - Info Model
 struct Info: Codable {
     let count: Int
     let pages: Int
@@ -28,10 +28,4 @@ struct CharacterDetailModel: Codable {
     let status: String?
     let image: String?
     let episode: [String]?
-}
-
-// MARK: - Location Info Model
-struct LocationInfo: Codable {
-    let name: String?
-    let url: String?
 }
