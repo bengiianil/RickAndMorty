@@ -13,7 +13,7 @@ protocol CharacterInteractorProtocol {
 }
 
 // MARK: - Interactor Implementation
-class CharacterInteractor: CharacterInteractorProtocol {
+final class CharacterInteractor: CharacterInteractorProtocol {
     private let networkManager: NetworkManagerProtocol
     
     init(networkManager: NetworkManagerProtocol = NetworkManager()) {

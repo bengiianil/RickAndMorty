@@ -22,11 +22,15 @@ struct Info: Codable {
 }
 
 // MARK: - Character Detail Model
-struct CharacterDetailModel: Codable, Identifiable {
+struct CharacterDetailModel: Codable, Identifiable, Hashable {
     let id: Int
     let name: String?
     let status: String?
     let species: String?
     let image: String?
     let episode: [String]?
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
 }

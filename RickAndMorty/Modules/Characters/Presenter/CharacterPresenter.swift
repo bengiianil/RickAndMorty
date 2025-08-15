@@ -6,28 +6,33 @@
 //
 
 import Combine
-import Foundation
+import SwiftUI
 
 // MARK: - Presenter Protocol
 protocol CharacterPresenterProtocol: ObservableObject {
     var characters: [CharacterDetailModel] { get }
     var isLoading: Bool { get }
-    
+
     func loadCharacters()
     func loadMoreCharacters()
 }
 
 // MARK: - Presenter Implementation
-class CharacterPresenter: CharacterPresenterProtocol {
+final class CharacterPresenter: CharacterPresenterProtocol {
     @Published var characters: [CharacterDetailModel] = []
     @Published var isLoading: Bool = false
+    @Published var selectedCharacter: CharacterDetailModel?
+    @Published var isDetailActive = false
     
     private let interactor: CharacterInteractorProtocol
+    private let router: CharacterRouterProtocol
     private var currentPage = 1
     private var totalPages = 1
     
-    init(interactor: CharacterInteractorProtocol) {
+    init(interactor: CharacterInteractorProtocol,
+         router: CharacterRouterProtocol) {
         self.interactor = interactor
+        self.router = router
     }
     
     func loadCharacters() {
@@ -55,5 +60,17 @@ class CharacterPresenter: CharacterPresenterProtocol {
             self.characters.append(contentsOf: response.results)
             self.isLoading = false
         }
+    }
+    
+    func selectCharacter(_ character: CharacterDetailModel) {
+        selectedCharacter = character
+        isDetailActive = true
+    }
+    
+    func getDetailView() -> AnyView {
+        guard let selectedCharacter = selectedCharacter else {
+            return AnyView(EmptyView())
+        }
+        return router.navigateToCharacterDetail(for: selectedCharacter)
     }
 }

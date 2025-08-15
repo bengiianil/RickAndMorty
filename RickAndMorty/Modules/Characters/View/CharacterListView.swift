@@ -9,12 +9,12 @@ import SwiftUI
 
 struct CharacterListView: View {
     @StateObject private var presenter: CharacterPresenter
-    private let router: CharacterRouterProtocol
+    private let router: CharacterRouter
     
     init(networkManager: NetworkManagerProtocol = NetworkManager()) {
-        let interactor = CharacterInteractor(networkManager: networkManager)
-        let presenter = CharacterPresenter(interactor: interactor)
         let router = CharacterRouter()
+        let interactor = CharacterInteractor(networkManager: networkManager)
+        let presenter = CharacterPresenter(interactor: interactor, router: router)
         
         self._presenter = StateObject(wrappedValue: presenter)
         self.router = router
@@ -24,10 +24,10 @@ struct CharacterListView: View {
         NavigationStack {
             VStack {
                 if presenter.isLoading && presenter.characters.isEmpty {
-                    ProgressView("Karakterler yükleniyor...")
+                    ProgressView("Loading...")
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                 } else if presenter.characters.isEmpty && !presenter.isLoading {
-                    Text("Karakter bulunamadı")
+                    Text("Character not found.")
                         .foregroundColor(.gray)
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                 } else {
@@ -37,8 +37,9 @@ struct CharacterListView: View {
                              GridItem(.flexible(), spacing: 8)
                          ], spacing: 16) {
                              ForEach(presenter.characters) { character in
+                                
                                  CharacterCardView(character: character) {
-                                     router.navigateToCharacterDetail(character)
+                                     presenter.selectCharacter(character)
                                  }
                                  .onAppear {
                                      if character.id == presenter.characters.last?.id {
@@ -55,6 +56,13 @@ struct CharacterListView: View {
                                  .padding()
                          }
                      }
+                    .background(
+                        NavigationLink(
+                            destination: presenter.getDetailView(),
+                            isActive: $presenter.isDetailActive
+                        ) { EmptyView() }
+                        .hidden()
+                    )
                 }
             }
             .navigationTitle("Rick & Morty")
