@@ -7,25 +7,24 @@
 
 import Foundation
 
-enum CharacterList: Endpoint {    
-    
+enum CharacterList: Endpoint {
     case getCharacters(page: Int)
-    
+
     var path: String {
         switch self {
-        case .getCharacters(let page):
+        case .getCharacters:
             "/api/character"
-        }
-    }
-    
-    var queryParameters: [String : String]? {
-        switch self {
-        case .getCharacters(let page):
-            ["page" : "\(page)"]
         }
     }
     
     var httpMethod: HTTPMethod {
         .get
+    }
+    
+    var queryItems: [URLQueryItem]? {
+        switch self {
+        case .getCharacters(let page):
+            return [URLQueryItem(name: "page", value: "\(page)")]
+        }
     }
 }

@@ -1,5 +1,5 @@
 //
-//  CharacterRowView.swift
+//  CharacterCardView.swift
 //  RickAndMorty
 //
 //  Created by Bengi Anıl on 14.08.2025.
@@ -8,8 +8,9 @@
 import SwiftUI
 import Kingfisher
 
-struct CharacterRowView: View {
+struct CharacterCardView: View {
     let character: CharacterDetailModel?
+    let onTap: () -> Void
 
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
@@ -18,15 +19,18 @@ struct CharacterRowView: View {
             userNameView
         }
         .padding()
-        .background(.white)
         .background(
-            RoundedRectangle(cornerRadius: 10)
+            RoundedRectangle(cornerRadius: 8)
+                .fill(Color.white)
                 .stroke(Color.gray.opacity(0.1), lineWidth: 2)
         )
+        .onTapGesture {
+            onTap()
+        }
     }
 }
 
-private extension CharacterRowView {
+extension CharacterCardView {
     
     @ViewBuilder
     var userImageView: some View {
@@ -46,9 +50,20 @@ private extension CharacterRowView {
     @ViewBuilder
     var userStatusView: some View {
         if let status = character?.status {
-            Text(status)
-                .font(.subheadline)
-                .foregroundColor(.black)
+            HStack {
+                StatusIndicator(status: status)
+                Text(status)
+                    .font(.subheadline)
+                    .foregroundColor(.secondary)
+                
+                Text("•")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+                
+                Text(character?.species ?? "Unknown")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+            }
         } else {
             ShimmerView(width: 100, height: 20)
         }
@@ -68,5 +83,5 @@ private extension CharacterRowView {
 
 
 #Preview {
-    CharacterRowView(character: PreviewProvider.shared.character.first)
+    CharacterCardView(character: PreviewProvider.shared.character.first, onTap: {})
 }

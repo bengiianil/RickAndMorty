@@ -13,6 +13,7 @@ enum NetworkError: Error {
     case failedResponse(statusCode: Int)
     case failedDecoding(errorDescription: String)
     case failedEncoding(errorDescription: String)
+    case unknownError
 
     var errorDescription: String {
         switch self {
@@ -26,6 +27,8 @@ enum NetworkError: Error {
             return "Decode Failed Error: \(errorDescription)"
         case .failedEncoding(let errorDescription):
             return "Encode Failed Error: \(errorDescription)"
+        case .unknownError:
+            return "Unknown Error"
         }
     }
 }

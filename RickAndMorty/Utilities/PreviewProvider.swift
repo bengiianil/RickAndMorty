@@ -17,6 +17,7 @@ final class PreviewProvider {
         .init(id: 2,
               name: "Morty Smith",
               status: "Alive",
+              species: "Human",
               image: "https://rickandmortyapi.com/api/character/avatar/2.jpeg",
               episode: ["https://rickandmortyapi.com/api/episode/1",
                         "https://rickandmortyapi.com/api/episode/2"])
